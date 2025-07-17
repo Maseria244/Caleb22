@@ -92,12 +92,21 @@ while command == 'help':
 print("Not recognised as an internal or external command")'''
 
 command = ""
+started = False
 while True:
     command = input("> ").lower()
     if command == 'start':
-        print("Car started")
+        if started:
+            print("Car already started")
+        else:
+            started = True
+            print("Car started")
     elif command == 'stop':
-        print("Car stop")
+        if not started:
+            print("Car already stopped")
+        else:
+            started = False
+            print("Car stop")
     elif command == 'help':
         print("Start --> Start the car")
         print("Stop --> Stop the car")
